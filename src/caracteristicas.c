@@ -7,6 +7,7 @@
 #include "caracteristicas.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "utn.h"
 
 int imprimirTipos(eTipo lista[],int tam)
@@ -50,7 +51,47 @@ int imprimirColores(eColor lista[],int tam)
 	return retorno;
 }
 
+int obtenerTipo(eTipo listaTipos[],int tamTipos,char*descripcion,int id)
+{
+	int retorno = -1;
 
+	if(listaTipos!=NULL && descripcion!=NULL)
+	{
+		for(int i=0;i<tamTipos;i++)
+		{
+			if(listaTipos[i].id==id)
+			{
+				strcpy(descripcion,listaTipos[i].descripcion);
+				retorno = 0;
+			}
+
+		}
+
+	}
+
+	return retorno;
+}
+
+int obtenerColor(eColor listaColores[],int tamColores, char*descripcion,int id)
+{
+	int retorno = -1;
+
+	if(listaColores!=NULL && descripcion!=NULL)
+	{
+		for(int i=0;i<tamColores;i++)
+		{
+			if(listaColores[i].id==id)
+			{
+				strcpy(descripcion,listaColores[i].nombreColor);
+				retorno = 0;
+			}
+
+		}
+
+	}
+
+	return retorno;
+}
 
 
 

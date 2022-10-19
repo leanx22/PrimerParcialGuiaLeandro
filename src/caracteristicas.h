@@ -25,5 +25,8 @@ typedef struct{
 
 int imprimirTipos(eTipo lista[],int tam);
 
+int obtenerTipo(eTipo listaTipos[],int tamTipos,char*descripcion,int id);
 
 int imprimirColores(eColor lista[],int tam);
+
+int obtenerColor(eColor listaColores[],int tamColores, char*descripcion,int id);

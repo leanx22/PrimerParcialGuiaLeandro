@@ -74,6 +74,10 @@ int main(void)
 			{
 				printf("\nMascota actualizada correctamente!\n");
 				system("PAUSE");
+			}else
+			{
+				printf("\nNo se encuentra la mascota o no hay mascotas cargadas!\n");
+				system("PAUSE");
 			}
 			break;
 		case 3:

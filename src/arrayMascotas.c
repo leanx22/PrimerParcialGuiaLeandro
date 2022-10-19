@@ -92,6 +92,7 @@ int nuevaMascota(eMascota lista[],eTipo listaTipos[],eColor listaColores[],
 				lista[indice].isEmpty=0;
 				*ids += 1;
 				*cAltas+=1;
+				printf("\nID DE LA MASCOTA: %d",lista[indice].id);
 				retorno = 0;
 			}
 
@@ -110,7 +111,7 @@ int buscarIndicexId(eMascota lista[],int tam, int idBusqueda)
 	{
 		for(int i=0;i<tam;i++)
 		{
-			if(lista[i].id == idBusqueda)
+			if(lista[i].id == idBusqueda && lista[i].isEmpty != 1)
 			{
 				retorno = i;
 				break;
@@ -151,6 +152,8 @@ int modificarMascota(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos)
 	int tipo;
 	char vacunado;
 
+	char descripcionTipo[20];
+
 	if(lista!=NULL && listaTipos!=NULL)
 	{
 		system("CLS");
@@ -159,6 +162,10 @@ int modificarMascota(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos)
 		if(indice !=-1)
 		{
 			printf("\n**MODIFICACION**");
+			obtenerTipo(listaTipos,tamTipos,descripcionTipo,lista[indice].idTipo);
+			printf("-->DATOS ACTUALES"
+					"\nTIPO: %s"
+					"\nVACUNADO: %c",descripcionTipo,lista[indice].vacunado);
 			utn_pedirInt(&opcion,"\n1)Modificar tipo.\n2)Modificar vacunacion.\n>Ingrese una opcion: ","\nError, reintente!",1,2,99);
 			if(opcion==1)
 			{
@@ -189,49 +196,6 @@ int modificarMascota(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos)
 
 	return retorno;
 }
-
-int obtenerTipo(eTipo listaTipos[],int tamTipos,char*descripcion,int id)
-{
-	int retorno = -1;
-
-	if(listaTipos!=NULL && descripcion!=NULL)
-	{
-		for(int i=0;i<tamTipos;i++)
-		{
-			if(listaTipos[i].id==id)
-			{
-				strcpy(descripcion,listaTipos[i].descripcion);
-				retorno = 0;
-			}
-
-		}
-
-	}
-
-	return retorno;
-}
-
-int obtenerColor(eColor listaColores[],int tamColores, char*descripcion,int id)
-{
-	int retorno = -1;
-
-	if(listaColores!=NULL && descripcion!=NULL)
-	{
-		for(int i=0;i<tamColores;i++)
-		{
-			if(listaColores[i].id==id)
-			{
-				strcpy(descripcion,listaColores[i].nombreColor);
-				retorno = 0;
-			}
-
-		}
-
-	}
-
-	return retorno;
-}
-
 
 int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos,eColor listaColores[],int tamColores)
 {
