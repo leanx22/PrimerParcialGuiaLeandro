@@ -76,7 +76,7 @@ int main(void)
 				system("PAUSE");
 			}else
 			{
-				printf("\nNo se encuentra la mascota o no hay mascotas cargadas!\n");
+				printf("\nNo se encuentra la mascota o no hay mascotas cargadas\n");
 				system("PAUSE");
 			}
 			break;
@@ -87,7 +87,7 @@ int main(void)
 				system("PAUSE");
 			}else
 			{
-				printf("\nNo se pudo encontrar el id ingresado! o no hay mascotas cargadas!\n");
+				printf("\nNo se pudo encontrar el id ingresado, no hay mascotas cargadas o el usuario cancelo la operacion!\n");
 				system("PAUSE");
 			}
 			break;

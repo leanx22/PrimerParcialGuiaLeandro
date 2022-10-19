@@ -127,6 +127,8 @@ int bajaMascota(eMascota lista[],int tam)
 	int retorno = -1;
 	int idBusqueda;
 	int indice;
+	char nombre[20];
+	char respuesta;
 
 	if(lista!=NULL && tam>0)
 	{
@@ -134,8 +136,15 @@ int bajaMascota(eMascota lista[],int tam)
 		indice = buscarIndicexId(lista,tam,idBusqueda);
 		if(indice!=-1)
 		{
+			strcpy(nombre,lista[indice].nombre);
+			printf("\nEliminar a %s?(s = confirmar/pulse otra tecla para cancelar)",nombre);
+			fflush(stdin);
+			respuesta = getchar();
+			if(respuesta=='s')
+			{
 			lista[indice].isEmpty=1;
 			retorno = 0;
+			}
 		}
 	}
 
@@ -164,8 +173,9 @@ int modificarMascota(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos)
 			printf("\n**MODIFICACION**");
 			obtenerTipo(listaTipos,tamTipos,descripcionTipo,lista[indice].idTipo);
 			printf("-->DATOS ACTUALES"
+					"\nNOMBRE: %s"
 					"\nTIPO: %s"
-					"\nVACUNADO: %c",descripcionTipo,lista[indice].vacunado);
+					"\nVACUNADO: %c",lista[indice].nombre,descripcionTipo,lista[indice].vacunado);
 			utn_pedirInt(&opcion,"\n1)Modificar tipo.\n2)Modificar vacunacion.\n>Ingrese una opcion: ","\nError, reintente!",1,2,99);
 			if(opcion==1)
 			{
@@ -227,14 +237,14 @@ int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos,eCol
 			}
 		}
 		printf("\n**MASCOTAS**");
-		printf("\n| ID| TIPO | NOMBRE| EDAD | VACUNADO | COLOR |");
+		printf("\n|  ID  |  TIPO  |   NOMBRE   | EDAD | VACUNADO |  COLOR  |");
 		for(int i=0;i<tam;i++)
 		{
 			if(lista[i].isEmpty==0)
 			{
 				obtenerTipo(listaTipos,tamTipos,descripcionTipos,lista[i].idTipo);
 				obtenerColor(listaColores,tamColores,descripcionColor,lista[i].idColor);
-				printf("\n| %d | %s | %s | %d | %c | %s |",lista[i].id,descripcionTipos,lista[i].nombre,lista[i].edad,lista[i].vacunado,descripcionColor);
+				printf("\n| %-4d | %-6s | %-10s | %-4d | %-8c | %-7s |",lista[i].id,descripcionTipos,lista[i].nombre,lista[i].edad,lista[i].vacunado,descripcionColor);
 			}
 		}
 		retorno = 0;
