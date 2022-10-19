@@ -37,8 +37,8 @@ int buscarIndicexId(eMascota lista[],int tam,int idBusqueda);
 
 int modificarMascota(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos);
 
-int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos);
+int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos,eColor listaColores[],int tamColores);
 
 int obtenerTipo(eTipo listaTipos[],int tamTipos,char*descripcion,int id);
 
-
+int obtenerColor(eColor listaColores[],int tamColores, char*descripcion,int id);

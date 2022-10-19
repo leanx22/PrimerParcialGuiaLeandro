@@ -88,7 +88,7 @@ int main(void)
 			}
 			break;
 		case 4:
-			if(altas>0 && listarMascotas(listaMascotas,listaTipos,TAM,CANT_TIPOS)==0)
+			if(altas>0 && listarMascotas(listaMascotas,listaTipos,TAM,CANT_TIPOS,listaColores,CANT_COLORES)==0)
 			{
 				printf("\n");
 				system("PAUSE");

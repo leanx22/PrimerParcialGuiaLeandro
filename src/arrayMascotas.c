@@ -211,11 +211,34 @@ int obtenerTipo(eTipo listaTipos[],int tamTipos,char*descripcion,int id)
 	return retorno;
 }
 
-int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos)
+int obtenerColor(eColor listaColores[],int tamColores, char*descripcion,int id)
+{
+	int retorno = -1;
+
+	if(listaColores!=NULL && descripcion!=NULL)
+	{
+		for(int i=0;i<tamColores;i++)
+		{
+			if(listaColores[i].id==id)
+			{
+				strcpy(descripcion,listaColores[i].nombreColor);
+				retorno = 0;
+			}
+
+		}
+
+	}
+
+	return retorno;
+}
+
+
+int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos,eColor listaColores[],int tamColores)
 {
 	int retorno = -1;
 	eMascota aux;
 	char descripcionTipos[20];
+	char descripcionColor[20];
 
 	if(lista!=NULL && listaTipos!=NULL)
 	{
@@ -238,8 +261,10 @@ int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos)
 		for(int i=0;i<tam;i++)
 		{
 			if(lista[i].isEmpty==0)
-			{obtenerTipo(listaTipos,tamTipos,descripcionTipos,lista[i].idTipo);
-			printf("\n| %d | %s | %s | %d | %c | %d |",lista[i].id,descripcionTipos,lista[i].nombre,lista[i].edad,lista[i].vacunado,lista[i].idColor);
+			{
+				obtenerTipo(listaTipos,tamTipos,descripcionTipos,lista[i].idTipo);
+				obtenerColor(listaColores,tamColores,descripcionColor,lista[i].idColor);
+				printf("\n| %d | %s | %s | %d | %c | %s |",lista[i].id,descripcionTipos,lista[i].nombre,lista[i].edad,lista[i].vacunado,descripcionColor);
 			}
 		}
 		retorno = 0;
