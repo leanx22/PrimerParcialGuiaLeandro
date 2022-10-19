@@ -218,6 +218,12 @@ int listarMascotas(eMascota lista[],eTipo listaTipos[],int tam,int tamTipos,eCol
 					lista[j] = lista[i];
 					lista[i] = aux;
 				}
+				if(lista[i].idTipo == lista[j].idTipo && strcmp(lista[i].nombre,lista[j].nombre)>0)
+				{
+					aux = lista[j];
+					lista[j] = lista[i];
+					lista[i] = aux;
+				}
 			}
 		}
 		printf("\n**MASCOTAS**");
